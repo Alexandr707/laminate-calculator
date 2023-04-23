@@ -1,0 +1,36 @@
+.selectImage {
+  padding: 1rem;
+  overflow-x: hidden;
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  position: relative;
+  width: 200px;
+  height: 50px;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.item.selected {
+  outline: 4px solid teal;
+}
+
+.item:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.item > img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

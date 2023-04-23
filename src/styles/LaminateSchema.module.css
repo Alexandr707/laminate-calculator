@@ -1,0 +1,59 @@
+.laminateSchema {
+  margin-top: 2rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.title {
+  font-weight: 400;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.area {
+  font-weight: 400;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.scema {
+  position: relative;
+  margin-top: 2rem;
+  background-color: #e6e6e6;
+  border: 1px solid #000;
+}
+
+.length,
+.width {
+  position: absolute;
+  font-weight: 600;
+  color: brown;
+  white-space: nowrap;
+}
+
+.length {
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -110%);
+}
+
+.width {
+  left: 0;
+  top: 50%;
+  transform: rotate(-90deg) translateY(-400%);
+}
+
+.container {
+  background-color: #fff;
+}
+
+.tile {
+  display: inline-block;
+  padding: 5px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  box-shadow: inset 0px 0px 0px 1px black;
+}

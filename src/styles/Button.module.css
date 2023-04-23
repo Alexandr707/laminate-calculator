@@ -1,0 +1,23 @@
+.btn {
+  display: block;
+  width: 100%;
+  max-width: 305px;
+  padding: 10px 15px;
+  color: white;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: black;
+  overflow: hidden;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.btn:active {
+  transform: scale(0.95) translateY(5px);
+}
+
+.btn:disabled {
+  background-color: gray;
+  cursor: default;
+  pointer-events: none;
+}

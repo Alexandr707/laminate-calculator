@@ -1,0 +1,6 @@
+.radio + .radio {
+  margin-top: 0.5rem;
+}
+.radio > input[type='radio'] {
+  margin-right: 1rem;
+}

@@ -1,0 +1,21 @@
+.ofsetVariants {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+.select {
+  width: 50%;
+  text-align: center;
+}
+
+@media (max-width: 550px) {
+  .ofsetVariants {
+    flex-direction: column;
+  }
+  .select {
+    margin-top: 1rem;
+    width: 100%;
+  }
+}
