@@ -159,7 +159,7 @@ const CalcData: FC<PropsWithChildren<CalcData>> = ({ onCalc }) => {
       <DirectionVariant current={direction} onChange={setDirection} />
 
       <Button onClick={calculate} style={{ margin: '1rem auto' }}>
-        Расчитать
+        Рассчитать
       </Button>
     </>
   );

@@ -51,6 +51,8 @@
 .tile {
   display: inline-block;
   padding: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
