@@ -1,7 +1,7 @@
 .directionVariant {
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   margin-top: 1rem;
   font-weight: 500;
 }
