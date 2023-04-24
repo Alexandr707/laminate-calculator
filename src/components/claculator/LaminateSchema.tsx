@@ -59,7 +59,7 @@ const LaminateSchema: FC<LaminateSchemaProps> = ({
             {!!rows.length &&
               rows.map(row => (
                 <LaminateRow
-                  key={row.x + row.y}
+                  key={'' + row.x + row.y}
                   x={row.x * px}
                   y={row.y * px}
                   lamH={w_lam * px}
@@ -70,7 +70,7 @@ const LaminateSchema: FC<LaminateSchemaProps> = ({
                   {!!row.tiles &&
                     row.tiles.map((tile, i) => (
                       <div
-                        key={tile.l + tile.n + i}
+                        key={'' + tile.l + tile.n + i}
                         className={st.tile}
                         style={{
                           width: tile.l * px + 'px',

@@ -20,8 +20,8 @@
 .scema {
   position: relative;
   margin-top: 2rem;
-  background-color: #e6e6e6;
-  border: 1px solid #000;
+  /* background-color: #e6e6e6;
+  border: 1px solid #000; */
 }
 
 .length,
@@ -52,6 +52,8 @@
   display: inline-block;
   font-size: 0.8rem;
   font-weight: 600;
+  background-color: #e6e6e6;
+
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
