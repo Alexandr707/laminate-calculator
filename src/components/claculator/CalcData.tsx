@@ -1,7 +1,6 @@
 import { LaminateDirection } from '@/@types/LaminateDirection';
 import { RowType, SelectedType } from '@/@types/SelectedType';
 import { ofsetVariants } from '@/data/ofsetVariants';
-import { getDiagonalRows } from '@/utils/getDiagonalRowLength';
 import Button from 'components/ui/Button';
 import Input from 'components/ui/Input';
 import { ChangeEvent, FC, PropsWithChildren, useEffect, useState } from 'react';
@@ -29,7 +28,7 @@ const CalcData: FC<PropsWithChildren<CalcData>> = ({ onCalc }) => {
   const [packArea, setPackArea] = useState<number | string>(10);
   const [ofsetType, setOfsetType] = useState('1');
   const [direction, setDirection] = useState<LaminateDirection>(
-    'Укладка по ширине 90°',
+    'Укладка по длине 0°',
   );
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -62,10 +61,7 @@ const CalcData: FC<PropsWithChildren<CalcData>> = ({ onCalc }) => {
 
       let rows:RowType[] = []
 
-      if(direction === 'Укладка по диагонали 135°' || direction === 'Укладка по диагонали 45°'){
-        rows = getDiagonalRows(l_room,w_room,w_lam)
-
-      } else if (direction === 'Укладка по длине 0°'){
+        if (direction === 'Укладка по длине 0°'){
         rows = new Array<RowType>(Math.ceil(w_room / w_lam))
           .fill({length:l_room,width:w_lam,x:0,y:0});
           

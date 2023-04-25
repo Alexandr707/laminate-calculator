@@ -45,8 +45,8 @@ const LaminateRow: FC<PropsWithChildren<LaminateRowProps>> = ({
         height: height + 'px',
         left: x + 'px',
         top: y + 'px',
-        // transform: `translate(${-width / 2}px, ${0}px) rotate(-45deg)`,
-        transformOrigin: 'top  center',
+        transform: `translateY(-100%) rotate(-45deg)`,
+        transformOrigin: 'left bottom',
       };
     } else {
       return {
@@ -54,8 +54,8 @@ const LaminateRow: FC<PropsWithChildren<LaminateRowProps>> = ({
         height: height + 'px',
         right: x + 'px',
         top: y + 'px',
-        // transform: `translate(${0}px, ${0}px) rotate(45deg)`,
-        // transformOrigin: ' bottom',
+        transform: ` rotate(45deg)`,
+        transformOrigin: 'right bottom',
       };
     }
   }, [variant, x, y, height, width, lamH]);

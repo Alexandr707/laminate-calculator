@@ -78,7 +78,7 @@ const LaminateSchema: FC<LaminateSchemaProps> = ({
                           backgroundImage: `url("${LaminateImage?.src || ''}")`,
                         }}
                       >
-                        {tile.n}
+                        <span className={st.tileLabel}>{tile.n}</span>
                       </div>
                     ))}
                 </LaminateRow>

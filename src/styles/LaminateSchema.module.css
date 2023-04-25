@@ -50,7 +50,6 @@
 
 .tile {
   display: inline-block;
-  font-size: 0.8rem;
   font-weight: 600;
   background-color: #e6e6e6;
 
@@ -59,4 +58,12 @@
   background-position: center;
 
   box-shadow: inset 0px 0px 0px 1px black;
+}
+
+.tileLabel {
+  position: relative;
+  left: 5px;
+  top: 5px;
+  font-size: 0.8rem;
+  line-height: 1;
 }

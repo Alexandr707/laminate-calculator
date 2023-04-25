@@ -17,7 +17,13 @@ const SelectImage: FC<SelectImageProps> = ({ onSelect }) => {
   useEffect(() => {
     fetch('https://moscow.fargospc.ru/test/json/')
       .then(response => response.json())
-      .then(data => setLaminatVariants(data as LaminateVariant[]))
+      .then(data =>
+        (data as LaminateVariant[]).filter(item =>
+          item.title.toLowerCase().includes('ламинат'),
+        ),
+      )
+      .then(data => setLaminatVariants(data))
+
       .catch(err => console.error(err));
   }, []);
 
