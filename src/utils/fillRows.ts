@@ -21,7 +21,13 @@ export function fillRows(options: SelectedType) {
 
         if (ost > 0) addSlicePlate(options, i, lamCount, rest, ost);
       } else {
-        ost -= addSlicePlate(options, i, lamCount, rest, l_lam / 2);
+        ost -= addSlicePlate(
+          options,
+          i,
+          lamCount,
+          rest,
+          Math.min(w_lam / 2, ost),
+        );
 
         ost -= fillWholePlates(options, i, lamCount, ost);
 
@@ -34,13 +40,25 @@ export function fillRows(options: SelectedType) {
 
         if (ost > 0) addSlicePlate(options, i, lamCount, rest, ost);
       } else if (i % 3 === 1) {
-        ost -= addSlicePlate(options, i, lamCount, rest, l_lam / 3);
+        ost -= addSlicePlate(
+          options,
+          i,
+          lamCount,
+          rest,
+          Math.min(w_lam / 3, ost),
+        );
 
         ost -= fillWholePlates(options, i, lamCount, ost);
 
         if (ost > 0) addSlicePlate(options, i, lamCount, rest, ost);
       } else if (i % 3 === 2) {
-        ost -= addSlicePlate(options, i, lamCount, rest, (l_lam / 3) * 2);
+        ost -= addSlicePlate(
+          options,
+          i,
+          lamCount,
+          rest,
+          Math.min((w_lam / 3) * 2, ost),
+        );
 
         ost -= fillWholePlates(options, i, lamCount, ost);
 
@@ -82,6 +100,8 @@ function addSlicePlate(
 ) {
   const { l_lam, rows, minOst } = options;
   if (ost > l_lam) throw new RangeError('ошибка в расчетах');
+
+  if (ost <= 0) return 0;
 
   const row = rows[lamIdx];
   if (!row.tiles) row.tiles = [];
