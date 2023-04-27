@@ -17,7 +17,9 @@ export function fillRows(options: SelectedType) {
     //смещение 1/2
     if (ofsetType === 1) {
       if (i % 2 === 0) {
-        ost -= fillWholePlates(options, i, lamCount, ost);
+        ost > l_lam
+          ? (ost -= fillWholePlates(options, i, lamCount, ost))
+          : (ost -= addSlicePlate(options, i, lamCount, rest, ost));
 
         if (ost > 0) addSlicePlate(options, i, lamCount, rest, ost);
       } else {
@@ -26,7 +28,7 @@ export function fillRows(options: SelectedType) {
           i,
           lamCount,
           rest,
-          Math.min(w_lam / 2, ost),
+          Math.min(l_lam / 2, ost),
         );
 
         ost -= fillWholePlates(options, i, lamCount, ost);
@@ -36,7 +38,9 @@ export function fillRows(options: SelectedType) {
     } else if (ofsetType === 2) {
       //смещение 1/3
       if (i % 3 === 0) {
-        ost -= fillWholePlates(options, i, lamCount, ost);
+        ost > l_lam
+          ? (ost -= fillWholePlates(options, i, lamCount, ost))
+          : (ost -= addSlicePlate(options, i, lamCount, rest, ost));
 
         if (ost > 0) addSlicePlate(options, i, lamCount, rest, ost);
       } else if (i % 3 === 1) {
@@ -45,7 +49,7 @@ export function fillRows(options: SelectedType) {
           i,
           lamCount,
           rest,
-          Math.min(w_lam / 3, ost),
+          Math.min(l_lam / 3, ost),
         );
 
         ost -= fillWholePlates(options, i, lamCount, ost);
@@ -57,7 +61,7 @@ export function fillRows(options: SelectedType) {
           i,
           lamCount,
           rest,
-          Math.min((w_lam / 3) * 2, ost),
+          Math.min((l_lam / 3) * 2, ost),
         );
 
         ost -= fillWholePlates(options, i, lamCount, ost);
