@@ -14,7 +14,7 @@ const initCache = () => {
 };
 
 const tryNetwork = (req, timeout) => {
-  console.log(req.url);
+  // console.log(req.url);
   return new Promise((resolve, reject) => {
     const timeoutId = setTimeout(reject, timeout);
     fetch(req).then(res => {
@@ -29,7 +29,7 @@ const tryNetwork = (req, timeout) => {
 };
 
 const getFromCache = req => {
-  console.log('getting from cache...');
+  // console.log('getting from cache...');
   return caches.open(CacheKey).then(cache => {
     return cache.match(req).then(result => {
       return result || Promise.reject('no-match');

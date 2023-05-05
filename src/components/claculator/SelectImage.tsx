@@ -2,26 +2,26 @@ import clsx from 'clsx';
 import { FC, useEffect, useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import st from 'styles/SelectImage.module.css';
-import { LaminateVariant } from 'types/LaminateVariant';
+import { LaminateVariant, ProductType } from 'types/LaminateVariant';
 
 type SelectImageProps = {
-  onSelect: (value: LaminateVariant | null) => unknown;
+  onSelect: (value: ProductType | null) => unknown;
 };
 
 const SelectImage: FC<SelectImageProps> = ({ onSelect }) => {
-  const [selected, setSelected] = useState<number | null>(null);
-  const [laminatVariants, setLaminatVariants] = useState<
-    LaminateVariant[] | null
-  >(null);
+  const [selected, setSelected] = useState<string | null>(null);
+  const [laminatVariants, setLaminatVariants] = useState<ProductType[] | null>(
+    null,
+  );
 
   useEffect(() => {
     fetch('https://moscow.fargospc.ru/test/json/')
       .then(response => response.json())
-      .then(data =>
-        (data as LaminateVariant[]).filter(item =>
-          item.title.toLowerCase().includes('ламинат'),
-        ),
-      )
+      .then(response => {
+        const data = response as LaminateVariant;
+
+        return Object.keys(data.elements).map(el => data.elements[el]);
+      })
       .then(data => setLaminatVariants(data))
 
       .catch(err => console.error(err));
@@ -29,7 +29,7 @@ const SelectImage: FC<SelectImageProps> = ({ onSelect }) => {
 
   if (!laminatVariants) return null;
 
-  const changeHandler = (variant: LaminateVariant) => {
+  const changeHandler = (variant: ProductType) => {
     if (variant.id === selected) {
       onSelect(null);
       setSelected(null);
@@ -49,7 +49,10 @@ const SelectImage: FC<SelectImageProps> = ({ onSelect }) => {
             changeHandler(variant);
           }}
         >
-          <LazyLoadImage alt={variant.title} src={variant.src} />
+          <LazyLoadImage
+            alt={variant.title}
+            src={variant.photo[0]?.src || ''}
+          />
         </div>
       ))}
     </div>

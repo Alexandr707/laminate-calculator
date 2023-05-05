@@ -1,4 +1,4 @@
-import { LaminateVariant } from '@/@types/LaminateVariant';
+import { ProductType } from '@/@types/LaminateVariant';
 import { useResize } from '@/hooks/useResize';
 import { Convertor } from '@/utils/Convertor';
 import { fillRows } from '@/utils/fillRows';
@@ -18,9 +18,7 @@ const LaminateSchema: FC<LaminateSchemaProps> = ({
   const windowSize = useResize(300);
   const { l_room, w_room, rows, direction, w_lam, nPack } = options;
 
-  const [LaminateImage, setLaminateImage] = useState<LaminateVariant | null>(
-    null,
-  );
+  const [LaminateImage, setLaminateImage] = useState<ProductType | null>(null);
 
   const ref = useRef<HTMLDivElement>(null);
   const [rect, setRect] = useState<DOMRect | null>(null);
