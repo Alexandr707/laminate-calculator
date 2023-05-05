@@ -1,7 +1,7 @@
-import { SelectedType } from '@/@types/SelectedType';
 import { fillRows } from '@/utils/fillRows';
 import { FC, PropsWithChildren, useState } from 'react';
 import st from 'styles/Calculator.module.css';
+import { SelectedType } from 'types/SelectedType';
 import CalcData from './CalcData';
 import LaminateSchema from './LaminateSchema';
 
