@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import st from 'styles/Cart.module.css';
 
-const Cart: FC<ProductType> = ({ currency, id, photo, price, src, title }) => {
+const Cart: FC<ProductType> = ({ currency, price, src, title }) => {
   return (
     <div className={st.Cart}>
       <div className={st.imageContainer}>

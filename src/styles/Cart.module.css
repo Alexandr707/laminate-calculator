@@ -1,4 +1,7 @@
 .Cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 10px;
   border: 1px solid #bbb;
   border-radius: 5px;
