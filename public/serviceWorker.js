@@ -14,13 +14,14 @@ const initCache = () => {
 };
 
 const tryNetwork = (req, timeout) => {
-  // console.log(req.url);
+  console.log(req.url);
   return new Promise((resolve, reject) => {
     const timeoutId = setTimeout(reject, timeout);
     fetch(req).then(res => {
       clearTimeout(timeoutId);
       const responseClone = res.clone();
       caches.open(CacheKey).then(cache => {
+        console.log(req.url);
         cache.put(req, responseClone);
       });
       resolve(res);
@@ -57,6 +58,10 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
+  // if (!e.request.url.startsWith('http:')) {
+  //   return e.respondWith(fetch(e.request));
+  // }
+
   e.respondWith(
     tryNetwork(e.request, timeout).catch(() => getFromCache(e.request)),
   );

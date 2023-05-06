@@ -1,0 +1,36 @@
+.Cart {
+  padding: 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.Cart:hover {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+}
+
+.imageContainer {
+  position: relative;
+}
+
+.imageContainer > img {
+  width: 100%;
+}
+
+.inner {
+  margin-top: auto;
+}
+
+.title {
+  margin-top: 1rem;
+  font-size: 1.2em;
+  font-weight: 500;
+  overflow-x: hidden;
+}
+
+.price {
+  margin-top: 0.5rem;
+  font-weight: 700;
+  color: teal;
+}

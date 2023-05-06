@@ -20,6 +20,8 @@ const SelectImage: FC<SelectImageProps> = ({ onSelect }) => {
       .then(response => {
         const data = response as LaminateVariant;
 
+        console.log(data);
+
         return Object.keys(data.elements).map(el => data.elements[el]);
       })
       .then(data => setLaminatVariants(data))

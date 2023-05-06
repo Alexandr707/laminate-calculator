@@ -1,16 +1,16 @@
-import Calculator from '@/components/claculator/Calculator';
-import Container from 'components/Container';
-import Heading from 'components/Heading';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import 'styles/App.css';
+import CalculatorPage from './pages/CalculatorPage';
+import CatalogPage from './pages/CatalogPage';
 
 function App() {
   return (
-    <>
-      <Container>
-        <Heading>Калькулятор</Heading>
-        <Calculator />
-      </Container>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<CatalogPage />} />
+        <Route path='/calculator' element={<CalculatorPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -73,7 +73,9 @@ const LaminateSchema: FC<LaminateSchemaProps> = ({
                         style={{
                           width: tile.l * px + 'px',
                           height: tile.w * px + 'px',
-                          backgroundImage: `url("${LaminateImage?.src || ''}")`,
+                          backgroundImage: `url("${
+                            LaminateImage?.photo[0] || ''
+                          }")`,
                         }}
                       >
                         <span className={st.tileLabel}>{tile.n}</span>
