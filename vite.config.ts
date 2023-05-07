@@ -16,6 +16,7 @@ export default ({ mode }) => {
   const vitePWA = VitePWA({
     registerType: 'autoUpdate',
     outDir: 'dist',
+    devOptions: { enabled: process.env.NODE_ENV === 'development' },
     workbox: {
       runtimeCaching: [
         {
@@ -51,20 +52,6 @@ export default ({ mode }) => {
           handler: 'NetworkFirst',
           options: {
             cacheName: 'json-data',
-            expiration: {
-              maxEntries: 50,
-              maxAgeSeconds: 60 * 60 * 24 * 60, // <== 60 days
-            },
-            cacheableResponse: {
-              statuses: [0, 200, 304],
-            },
-          },
-        },
-        {
-          urlPattern: /^https:*/i,
-          handler: 'NetworkFirst',
-          options: {
-            cacheName: 'fetch',
             expiration: {
               maxEntries: 50,
               maxAgeSeconds: 60 * 60 * 24 * 60, // <== 60 days

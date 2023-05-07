@@ -37,3 +37,9 @@
   font-weight: 700;
   color: teal;
 }
+
+@media (max-width: 550px) {
+  .Cart {
+    display: block;
+  }
+}

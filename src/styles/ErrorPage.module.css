@@ -1,0 +1,17 @@
+.ErrorPage {
+  margin-top: 1rme;
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  color: brown;
+  font-size: 1.8rem;
+}
+
+.link {
+  margin-top: 1rem;
+  text-align: center;
+  color: blue;
+  /* cursor: pointer; */
+}

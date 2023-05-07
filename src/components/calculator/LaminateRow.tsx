@@ -39,24 +39,6 @@ const LaminateRow: FC<PropsWithChildren<LaminateRowProps>> = ({
         transform: 'rotate(-90deg) ',
         transformOrigin: 'left bottom',
       };
-    } else if (variant === 'Укладка по диагонали 45°') {
-      return {
-        width: width + 'px',
-        height: height + 'px',
-        left: x + 'px',
-        top: y + 'px',
-        transform: `translateY(-100%) rotate(-45deg)`,
-        transformOrigin: 'left bottom',
-      };
-    } else {
-      return {
-        width: width + 'px',
-        height: height + 'px',
-        right: x + 'px',
-        top: y + 'px',
-        transform: ` rotate(45deg)`,
-        transformOrigin: 'right bottom',
-      };
     }
   }, [variant, x, y, height, width, lamH]);
 

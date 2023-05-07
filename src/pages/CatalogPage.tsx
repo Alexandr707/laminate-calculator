@@ -20,16 +20,18 @@ const CatalogPage: FC<PropsWithChildren<unknown>> = () => {
   }, []);
 
   return (
-    <Container>
-      {!items && <p>Loading...</p>}
-      <div className={st.catalog}>
-        <div className={st.grid}>
-          {items?.map(item => (
-            <Cart key={item.id} {...item} />
-          ))}
+    <>
+      <Container>
+        {!items && <p>Loading...</p>}
+        <div className={st.catalog}>
+          <div className={st.grid}>
+            {items?.map(item => (
+              <Cart key={item.id} {...item} />
+            ))}
+          </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </>
   );
 };
 

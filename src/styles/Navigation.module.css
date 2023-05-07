@@ -1,0 +1,21 @@
+.Navigation {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  height: 70px;
+  box-shadow: 0 0px 3px rgba(0, 0, 0, 0.4);
+}
+
+.navigationItem {
+  display: inline-block;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navigationItem + .navigationItem {
+  margin-left: 1rem;
+}
+
+.navigationItem:hover {
+  color: darkcyan;
+}
