@@ -16,7 +16,7 @@ export default ({ mode }) => {
   const vitePWA = VitePWA({
     registerType: 'autoUpdate',
     outDir: 'dist',
-    devOptions: { enabled: process.env.NODE_ENV === 'development' },
+    devOptions: { enabled: false }, //{ enabled: process.env.NODE_ENV === 'development' },
     workbox: {
       runtimeCaching: [
         {

@@ -1,0 +1,5 @@
+*[class*='gotoymaps__text'],
+*[class*='copyright__layout'],
+*[class*='map-copyrights-promo'] {
+  display: none !important;
+}

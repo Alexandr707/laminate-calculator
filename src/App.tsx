@@ -5,6 +5,7 @@ import NavigationLayout from './layots/NavigationLayout';
 import CalculatorPage from './pages/CalculatorPage';
 import CatalogPage from './pages/CatalogPage';
 import ErrorPage from './pages/ErrorPage';
+import MapPage from './pages/MapPage';
 
 function App() {
   const navItems: NavigationItemType[] = [
@@ -19,6 +20,7 @@ function App() {
         <Route element={<NavigationLayout items={navItems} />}>
           <Route path='/' element={<CatalogPage />} />
           <Route path='/calculator' element={<CalculatorPage />} />
+          <Route path='/map' element={<MapPage />} />
           <Route path='*' element={<ErrorPage />} />
         </Route>
       </Routes>
