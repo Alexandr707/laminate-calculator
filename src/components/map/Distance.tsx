@@ -17,7 +17,7 @@ type PointWithDistanceType = {
 
 const Distance: FC<DistanceType> = ({ points, userLocation, closest }) => {
   const mapApi = useYMaps() as any;
-  const [sortedPointesList, setSortedPointesList] = useState<
+  const [sortedPointsList, setSortedPointsList] = useState<
     PointWithDistanceType[] | undefined
   >();
 
@@ -38,7 +38,7 @@ const Distance: FC<DistanceType> = ({ points, userLocation, closest }) => {
 
     pointWithDistance.sort((p1, p2) => p1.distance - p2.distance);
 
-    setSortedPointesList(pointWithDistance);
+    setSortedPointsList(pointWithDistance);
 
     const closestPoint = distance.reduce(
       (acc, p) => (acc > p ? p : acc),
@@ -52,8 +52,8 @@ const Distance: FC<DistanceType> = ({ points, userLocation, closest }) => {
 
   return (
     <div className={st.Distance}>
-      {!!sortedPointesList &&
-        sortedPointesList.map(point => (
+      {!!sortedPointsList &&
+        sortedPointsList.map(point => (
           <div key={point.geometry.join(' ')} className={st.point}>
             <div className={st.addres}>
               Адрес: <b>{point.content}</b>
