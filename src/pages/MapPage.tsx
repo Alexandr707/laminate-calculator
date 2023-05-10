@@ -3,7 +3,7 @@ import Distance from '@/components/map/Distance';
 import MyMap from '@/components/map/MyMap';
 import { useResize } from '@/hooks/useResize';
 import { YMaps } from '@pbe/react-yandex-maps';
-import { FC, useEffect, useMemo, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import st from 'styles/MapPage.module.css';
 
 const points = [
@@ -22,8 +22,6 @@ const points = [
 ];
 
 const MapPage: FC = () => {
-  const geolocationArr = useMemo(() => points.map(p => p.geometry), []);
-
   const [userLocation, setUserLocation] = useState<number[] | undefined>();
   const [closestPoint, setClosestPoint] = useState<number | undefined>();
 
