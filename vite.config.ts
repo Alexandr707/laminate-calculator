@@ -1,10 +1,10 @@
+import replace from '@rollup/plugin-replace';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import * as url from 'url';
 import { defineConfig, loadEnv } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
-// const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 console.log('[dirname]:  ', __dirname);
@@ -16,8 +16,9 @@ export default ({ mode }) => {
   const vitePWA = VitePWA({
     registerType: 'autoUpdate',
     outDir: 'dist',
-    devOptions: { enabled: false }, //{ enabled: process.env.NODE_ENV === 'development' },
+    devOptions: { enabled: false }, // { enabled: process.env.NODE_ENV === 'development' }, //{ enabled: false },
     workbox: {
+      globPatterns: ['**/*.{js,css,html,ico,ttf,woff,woff2}'],
       runtimeCaching: [
         {
           urlPattern: /\.(png|svg|jpg|jpeg|webp)$/i,
@@ -25,7 +26,7 @@ export default ({ mode }) => {
           options: {
             cacheName: 'assets',
             expiration: {
-              maxEntries: 100,
+              maxEntries: 60,
               maxAgeSeconds: 60 * 60 * 24 * 60, // <== 60 days
             },
             cacheableResponse: {
@@ -34,13 +35,27 @@ export default ({ mode }) => {
           },
         },
         {
-          urlPattern: /\.(css|js|ttf|woff|woff2|json)$/i,
-          handler: 'CacheFirst',
+          urlPattern: /https:\/\/core-renderer-tiles\.maps\.yandex\.net*/i,
+          handler: 'NetworkOnly',
           options: {
-            cacheName: 'main',
+            cacheName: 'map',
             expiration: {
-              maxEntries: 30,
-              maxAgeSeconds: 60 * 60 * 24 * 60, // <== 60 days
+              maxEntries: 0,
+              maxAgeSeconds: 60 * 60,
+            },
+            cacheableResponse: {
+              statuses: [0, 200, 304],
+            },
+          },
+        },
+        {
+          urlPattern: /https:\/\/api-maps\.yandex\.ru*/i,
+          handler: 'NetworkOnly',
+          options: {
+            cacheName: 'map',
+            expiration: {
+              maxEntries: 0,
+              maxAgeSeconds: 60 * 60,
             },
             cacheableResponse: {
               statuses: [0, 200, 304],
@@ -65,8 +80,10 @@ export default ({ mode }) => {
     },
   });
 
+  const replaceOptions = { __DATE__: new Date().toISOString() };
+
   return defineConfig({
-    plugins: [react(), vitePWA],
+    plugins: [react(), vitePWA, replace(replaceOptions)], //vitePWA    vitePWA, replace(replaceOptions)
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src/'),

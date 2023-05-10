@@ -19,3 +19,9 @@
 .navigationItem:hover {
   color: darkcyan;
 }
+
+.navigationItem.active {
+  color: darkcyan;
+  cursor: default;
+  pointer-events: none;
+}

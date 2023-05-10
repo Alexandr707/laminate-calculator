@@ -5,28 +5,33 @@ export function useUserLocation() {
   const [error, setError] = useState<GeolocationPositionError | undefined>();
 
   useEffect(() => {
-    let watchId = 0;
+    let watchId: number | undefined;
+
+    function watch({ coords }: GeolocationPosition) {
+      setlocation([coords.latitude, coords.longitude]);
+    }
 
     function success({ coords }: GeolocationPosition) {
-      setlocation([coords.latitude, coords.longitude]);
+      watchId = navigator.geolocation.watchPosition(watch, error);
 
-      if (!location)
-        watchId = navigator.geolocation.watchPosition(success, error);
+      setlocation([coords.latitude, coords.longitude]);
+      setError(undefined);
     }
 
     function error(err: GeolocationPositionError) {
       console.warn(`ERROR(${err.code}): ${err.message}`);
       setError(err);
+      setlocation(undefined);
     }
 
     navigator.geolocation.getCurrentPosition(success, error);
 
     return () => {
-      if (!watchId) return;
-
-      navigator.geolocation.clearWatch(watchId);
+      if (watchId) {
+        navigator.geolocation.clearWatch(watchId);
+      }
     };
-  }, [location]);
+  }, []);
 
   return {
     location,

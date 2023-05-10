@@ -1,3 +1,4 @@
+// import { YMaps } from '@pbe/react-yandex-maps';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import 'styles/App.css';
 import { NavigationItemType } from 'types/NavigationType';
@@ -25,6 +26,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    // </YMaps>
   );
 }
 

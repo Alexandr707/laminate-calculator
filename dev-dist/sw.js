@@ -67,7 +67,7 @@ if (!self.define) {
     });
   };
 }
-define(['./workbox-a4536b13'], (function (workbox) { 'use strict';
+define(['./workbox-38dc6954'], (function (workbox) { 'use strict';
 
   self.skipWaiting();
   workbox.clientsClaim();
@@ -91,17 +91,26 @@ define(['./workbox-a4536b13'], (function (workbox) { 'use strict';
   workbox.registerRoute(/\.(png|svg|jpg|jpeg|webp)$/i, new workbox.CacheFirst({
     "cacheName": "assets",
     plugins: [new workbox.ExpirationPlugin({
-      maxEntries: 100,
+      maxEntries: 60,
       maxAgeSeconds: 5184000
     }), new workbox.CacheableResponsePlugin({
       statuses: [0, 200, 304]
     })]
   }), 'GET');
-  workbox.registerRoute(/\.(css|js|ttf|woff|woff2|json)$/i, new workbox.CacheFirst({
-    "cacheName": "main",
+  workbox.registerRoute(/https:\/\/core-renderer-tiles\.maps\.yandex\.net*/i, new workbox.NetworkOnly({
+    "cacheName": "map",
     plugins: [new workbox.ExpirationPlugin({
-      maxEntries: 30,
-      maxAgeSeconds: 5184000
+      maxEntries: 0,
+      maxAgeSeconds: 3600
+    }), new workbox.CacheableResponsePlugin({
+      statuses: [0, 200, 304]
+    })]
+  }), 'GET');
+  workbox.registerRoute(/https:\/\/api-maps\.yandex\.ru*/i, new workbox.NetworkOnly({
+    "cacheName": "map",
+    plugins: [new workbox.ExpirationPlugin({
+      maxEntries: 0,
+      maxAgeSeconds: 3600
     }), new workbox.CacheableResponsePlugin({
       statuses: [0, 200, 304]
     })]
