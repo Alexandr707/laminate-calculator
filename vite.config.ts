@@ -7,8 +7,6 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
-console.log('[dirname]:  ', __dirname);
-
 // https://vitejs.dev/config/
 export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };

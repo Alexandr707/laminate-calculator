@@ -70,8 +70,14 @@ const MyMap: FC<MyMapType> = ({
               key={point.geometry.join(' ')}
               geometry={point.geometry}
               options={{
+                hasHint: true,
+                openHintOnHover: true,
                 iconColor: i === closest ? 'red' : 'blue',
                 balloonContent: point.content || '',
+                balloonAutoPan: true,
+                hasBalloon: true,
+                openBalloonOnClick: true,
+                balloonCloseButton: true,
               }}
             />
           ))}
