@@ -87,7 +87,6 @@ const LaminateSchema: FC<LaminateSchemaProps> = ({
             <div className={st.container}></div>
           </div>
         </div>
-        <SelectImage onSelect={setLaminateImage} />
       </Container>
     </div>
   );
